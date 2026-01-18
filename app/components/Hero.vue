@@ -1,16 +1,18 @@
 <template>
   <main id="hero-section">
-    <img id="logo-hero" src="/pink-logo.png" alt="Logo de Pink Bubble Brunch">
-    <figure id="hero-img-container">
-      <picture>
-        <source srcset="/girls-vertical-1.jpg" media="(max-width: 619px)"/>
-        <source srcset="/main-slide.jpg" media="(min-width: 620px)"/>
-        <img src="/main-slide.jpg" alt="hero image">
-      </picture>
-    </figure>
-    <div id="foreground"></div>
-    <ReserveBtn></ReserveBtn>
-    <h2 id="hero-headline">Una experiencia extraordinaria para personas extraordinarias</h2>
+      <img id="logo-hero" src="/pink-logo.png" alt="Logo de Pink Bubble Brunch">
+      <figure id="hero-img-container">
+        <picture>
+          <source srcset="/girls-vertical-1.jpg" media="(max-width: 619px)"/>
+          <source srcset="/main-slide.jpg" media="(min-width: 620px)"/>
+          <img src="/main-slide.jpg" alt="hero image">
+        </picture>
+      </figure>
+      <div id="foreground"></div>
+    <div id="bottom-components">
+      <ReserveBtn></ReserveBtn>
+      <h2 id="hero-headline">Una experiencia extraordinaria para personas extraordinarias</h2>
+    </div>
   </main>
 </template>
 
@@ -37,19 +39,6 @@
     z-index: 1;
   }
 
-  #hero-headline {
-    position: absolute;
-    bottom: 9%;
-    color: white;
-    text-align: center;
-    font-size: clamp(20px, 4cqi, 41px);
-    font-weight: 300;
-    letter-spacing: 0.8px;
-    text-shadow: #1c1c1c 0px 2px 4px;
-    padding: 7px 6%;
-    z-index: 2;
-  }
-
   #hero-section figure#hero-img-container {
     position: relative;
     display: flex;
@@ -59,6 +48,11 @@
     overflow: hidden;
   }
   
+  #hero-img-container img {
+    height: 100%;
+    filter: brightness(0.86) contrast(1.1);
+  }
+
   #hero-section #foreground {
     position: absolute;
     top: 0;
@@ -71,9 +65,24 @@
     z-index: 1;
   }
   
-  #hero-img-container img {
-    height: 100%;
-    filter: brightness(0.86) contrast(1.1);
+  #bottom-components {
+    position: absolute;
+    bottom: 8%;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #hero-headline {
+    color: white;
+    text-align: center;
+    font-size: clamp(20px, 4cqi, 41px);
+    font-weight: 300;
+    letter-spacing: 0.8px;
+    text-shadow: #1c1c1c 0px 2px 4px;
+    padding: 7px 6%;
+    z-index: 2;
   }
 
   @media (min-width: 620px) {
