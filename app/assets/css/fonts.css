@@ -1,0 +1,35 @@
+/* Regular variable font */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/Cormorant_Garamond/CormorantGaramond-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 700; /* range supported by the variable font */
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Italic variable font */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/Cormorant_Garamond/CormorantGaramond-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 700; 
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Regular variable font */
+@font-face {
+  font-family: 'Merriweather';
+  src: url('/fonts/Merriweather/Merriweather-VariableFont_opsz,wdth,wght.ttf') format('truetype');
+  font-weight: 100 700; /* range supported by the variable font */
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Italic variable font */
+@font-face {
+  font-family: 'Merriweather';
+  src: url('/fonts/Merriweather/Merriweather-Italic-VariableFont_opsz,wdth,wght.ttf') format('truetype');
+  font-weight: 100 700; 
+  font-style: italic;
+  font-display: swap;
+}
