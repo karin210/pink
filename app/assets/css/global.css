@@ -5,6 +5,7 @@ html {
   --tertiary: #b13369;
   --accent: #da8e00;
   --neutral: #e5e5e5;
+  --soft-black-text: #181818;
   font-family: "Cormorant Garamond";
 }
 
@@ -12,4 +13,5 @@ body {
   margin: 0;
   background-color: var(--background);
   min-height: 100dvh;
+  overflow-x: hidden;
 }
