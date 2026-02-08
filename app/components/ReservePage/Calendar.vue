@@ -1,32 +1,73 @@
 <script setup lang="ts">
-
+  const { day, month, year } = defineProps<{
+    day: number
+    month: number
+    year: number
+  }>();
+  const emit = defineEmits(['dateClicked']);
   const daysOfWeek = 7;
+  const monthList = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septienbre', 'Octubre', 'Noviembre', 'Diciembre'];
+  const now = new Date();
+  const currentWeek = now.getDate()/daysOfWeek;
+  const selectedMonth = ref(month);
+  const weeksOfMonth = ref(Math.ceil(getDaysInMonth(year, selectedMonth.value) / daysOfWeek));
+  const selectedDate = reactive({ day, month, year});
 
+  function setSelectedMonth(action: string) {
+    if(action == 'add') {
+      selectedMonth.value = selectedMonth.value == 11 ? 0 : ++selectedMonth.value;
+    } else {
+      selectedMonth.value = selectedMonth.value == 0 ? 11 : --selectedMonth.value;
+    }
+    weeksOfMonth.value = Math.ceil(getDaysInMonth(year, selectedMonth.value) / daysOfWeek);
+  }
+  
   function getDaysInMonth(year: number, month: number) {
-    // Month is 1-indexed (1 = Jan, 2 = Feb, etc.)
-    // We pass 'month' as the monthIndex, which effectively 
-    // points to the NEXT month because JS months are 0-indexed.
-    return new Date(year, month, 0).getDate();
+    return new Date(year, month + 1, 0).getDate();
   }
 
-  const now = new Date();
-  const month = now.getMonth();
-  const year = now.getFullYear();
-  const weeksOfMonth = Math.floor(getDaysInMonth(year, month) / daysOfWeek);
+
+  function getDay(day: number, month: number) {
+    const currentDay = now.getDate()
+    const currentMonth = now.getMonth();
+    return day == currentDay && currentMonth == month;
+  };
+
+  function setSelectedDate(year: number, month: number, day: number) {
+    selectedDate.day = day;
+    selectedDate.month = month;
+    selectedDate.year = year;
+    emit('dateClicked', year, month, day);
+  }
 
 </script>
 
 <template>
   <div id="calendar-container"> 
+    <h3>Elije una fecha</h3>
     <table>
       <thead>
         <tr>
-          <th colspan="7">Elije una fecha</th>
+          <th>
+            <button class="changeMonthBtn" @click="setSelectedMonth('subtract')"><ChevronLeft></ChevronLeft></button>
+          </th>
+          <th colspan="5">
+            {{ monthList[selectedMonth] }} <span id="year">{{ selectedDate.year }}</span>
+          </th>
+          <th>
+            <button class="changeMonthBtn" @click="setSelectedMonth('add')"><ChevronRight></ChevronRight></button>
+          </th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(week, wIndex) in Array(weeksOfMonth).fill(null)" :key="wIndex">
-          <td v-for="(day, dIndex) in Array(daysOfWeek).fill(null)" :key="dIndex" :class="{ 'today': true }">
+        <tr v-for="(week, wIndex) in weeksOfMonth" :key="wIndex">
+          <td v-for="(day, dIndex) in daysOfWeek" 
+            :key="wIndex"
+            :class="{ 
+              'selected': selectedDate.day + 1 == ((wIndex * daysOfWeek) + dIndex + 1) && selectedMonth == selectedDate.month && selectedDate.year == year,
+              'is-empty': ((wIndex * daysOfWeek) + dIndex + 1) > getDaysInMonth(year, selectedMonth) 
+            }"
+            @click="setSelectedDate(selectedDate.year, selectedMonth, (wIndex * daysOfWeek) + dIndex)">
             {{ (wIndex * daysOfWeek) + dIndex + 1  }}
           </td>
         </tr>
@@ -38,23 +79,76 @@
 <style scoped>
 
   #calendar-container {
-    margin-top: 25vh;
+    width: 80vw;
+    max-width: 380px;
+    margin-top: 3vh;
+    container-type: inline-size;
+    margin: 0 auto;
   }
 
+  h3 {
+    font-family: Merriweather;
+    font-size: clamp(20px, 6cqi, 23px);
+    text-align: center;
+  }
+  
   table {
+    width: 100%;
     table-layout: fixed;
-    margin: 0 auto;
+    aspect-ratio: 1;
     font-family: Montserrat;
     border: 1px solid lightgray;
+    border-collapse: collapse;
     border-radius: 8px;
     border-spacing: 20px;
+    background-color: var(--background);
   } 
 
+  .changeMonthBtn {
+    border: none;
+  }
+
   td {
-    border: 1px solid lightgray;
+    position: relative;
+    border: 1px solid #b4b4b4;
     text-align: center;
-    padding: 2px;
     font-size: 14px;
+    cursor: pointer;
+  }
+
+  td::after {
+    content: '';
+    display: block;
+    transition: all 0.2s ease-out;
+  }
+
+  td:hover::after {
+    position: absolute;
+    background: var(--indicator-accent);
+    opacity: 0.6;
+    width: 40%;
+    height: 3px;
+    bottom: 10%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+
+  td.selected::after {
+    content: '';
+    display: block;
+    position: absolute;
+    background: var(--indicator-accent);
+    width: 40%;
+    height: 3px;
+    bottom: 10%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+
+  td.is-empty {
+    color: transparent;
   }
 
 </style>

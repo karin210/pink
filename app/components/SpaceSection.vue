@@ -62,7 +62,7 @@
   }
   
   h2 {
-    font-size: clamp(24px, 5cqi, 32px);
+    font-size: clamp(24px, 6vw, 32px);
     font-family: Merriweather;
     text-align: center;
     font-weight: 700;
@@ -204,7 +204,7 @@
   }
 
   .slide-dot.selected {
-    background-color: #83abff;
+    background-color: var(--indicator-accent);
   }
 
   @media(min-width: 640px) {
@@ -241,7 +241,7 @@
   @media(min-width: 1024px) {
 
     h2 {
-      font-size: clamp(32px, 3.2cqi, 37px);
+      font-size: clamp(32px, 3.2vw, 37px);
     }
   }
 
