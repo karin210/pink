@@ -128,7 +128,7 @@
     align-items: center;
     overflow: hidden;
     margin: 0;
-    background-color: #e8e8e8;
+    background-color: var(--surface-light);
     transition: height 0.4s ease-out;
     border-radius: 8px;
   }

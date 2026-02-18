@@ -1,0 +1,20 @@
+  h3 {
+    font-family: Merriweather;
+    font-size: clamp(20px, 6cqi, 23px);
+    text-align: center;
+  }
+
+  #next-btn, .see-btn {
+    font-family: "Montserrat";
+    display: block;
+    font-size: clamp(17px, 3cqi, 22px);
+    margin: 0 auto;
+    margin-top: 30px;
+    background-color: var(--tertiary);
+    border: none;
+    border-radius: 3px;
+    font-weight: 600;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
