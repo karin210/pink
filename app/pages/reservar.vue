@@ -1,82 +1,105 @@
 <script setup lang="ts">
+const now = new Date();
+const monthList = [
+  "Enero",
+  "Febrero",
+  "Marzo",
+  "Abril",
+  "Mayo",
+  "Junio",
+  "Julio",
+  "Agosto",
+  "Septienbre",
+  "Octubre",
+  "Noviembre",
+  "Diciembre",
+];
+const day = now.getDate() - 1;
+const month = now.getMonth();
+const year = now.getFullYear();
+const initialDate: {
+  day: number;
+  month: number;
+  year: number;
+} = { day, month, year };
+const selectedDate = reactive<{
+  day: number | undefined;
+  month: number | undefined;
+  year: number | undefined;
+}>({ day: undefined, month: undefined, year: undefined });
+const guestNum = ref<number | undefined>(undefined);
+const selectedTime = ref<string | undefined>(undefined);
+const showSummary = ref(false);
+const showCalendar = ref(false);
+const showGuests = ref(true);
+const selectedLocation = ref<"quinceo" | "artilleros" | undefined>(undefined);
+const selectedPlace = ref<"interior" | "exterior" | undefined>(undefined);
+const currentStep = ref<
+  "guests" | "calendar" | "time" | "place" | "finished" | undefined
+>(undefined);
 
-  const now = new Date();
-  const monthList = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septienbre', 'Octubre', 'Noviembre', 'Diciembre'];
-  const day= now.getDate() - 1;
-  const month = now.getMonth();
-  const year = now.getFullYear();
-  const initialDate: {
-    day: number;
-    month: number;
-    year: number;
-  } = { day, month, year};
-  const selectedDate = reactive<{
-    day: number | undefined;
-    month: number | undefined;
-    year: number | undefined;
-  }>({ day: undefined, month: undefined, year: undefined});
-  const guestNum = ref<number | undefined>(undefined);
-  const selectedTime = ref<string | undefined>(undefined);
-  const showSummary = ref(false);
-  const showCalendar = ref(false);
-  const showGuests = ref(true);
-  const selectedLocation = ref<'quinceo' | 'artilleros' | undefined>(undefined);
-  const selectedPlace = ref<'interior' | 'exterior' | undefined>(undefined);
-  const currentStep = ref<'guests' | 'calendar' | 'time' | 'place' | 'finished' | undefined>(undefined);
-  
+function handleCalendarClick(
+  selectedYear: number,
+  selectedMonth: number,
+  selectedDay: number,
+) {
+  // add 1 to the selectedDay
+  selectedDate.day = selectedDay;
+  selectedDate.month = selectedMonth;
+  selectedDate.year = selectedYear;
+  currentStep.value = "time";
+}
 
-  function handleCalendarClick(selectedYear: number, selectedMonth: number, selectedDay: number) {
-    // add 1 to the selectedDay
-    selectedDate.day = selectedDay;
-    selectedDate.month = selectedMonth;
-    selectedDate.year = selectedYear;
-    currentStep.value = 'time';
+function handleGuestNumSet(count) {
+  if (count > 0) {
+    guestNum.value = count;
+    currentStep.value = "calendar";
   }
+}
 
-  function handleGuestNumSet(count) {
-    if(count > 0) {
-      guestNum.value = count;
-      currentStep.value = 'calendar';
-    }
+function handleStepClick(step) {
+  switch (step) {
+    case "guests":
+      currentStep.value = "guests";
+      break;
+
+    case "date":
+      currentStep.value = "calendar";
+      break;
+
+    case "time":
+      currentStep.value = "time";
+      break;
+
+    case "place":
+      currentStep.value = "place";
+      break;
   }
+}
 
-  function handleStepClick(step) {
-    switch(step) {
-      case 'guests':
-        currentStep.value = 'guests';
-        break;
-      
-      case 'date': 
-        currentStep.value = 'calendar';
-        break;
+function handleTimeSetting(h: string, m: string, dayPart: string) {
+  const min = m.length == 1 ? "0" + m : m;
+  selectedTime.value = `${h}:${min} ${dayPart}`;
+  currentStep.value = "place";
+}
 
-      case 'time': 
-        currentStep.value = 'time';
-        break;
+function handleSelectedLocation(branchName: "quinceo" | "artilleros") {
+  selectedLocation.value = branchName;
+  currentStep.value = "guests";
+}
 
-      case 'place': 
-        currentStep.value = 'place';
-        break;
-    }
+function handleSelectedPlace(place: "interior" | "exterior") {
+  selectedPlace.value = place;
+  console.log(selectedPlace.value);
+  currentStep.value = "finished";
+}
+
+watch(currentStep, (newStep) => {
+  if (newStep === "calendar") {
+    console.log("calendar step");
+    console.log();
   }
-
-  function handleTimeSetting(h: string, m: string, dayPart: string) {
-    const min = m.length == 1 ? '0' + m : m;
-    selectedTime.value = `${h}:${min} ${dayPart}`;
-    currentStep.value = 'place';
-  }
-
-  function handleSelectedLocation(branchName: 'quinceo' | 'artilleros') {
-    selectedLocation.value = branchName;
-    currentStep.value = 'guests';
-  }
-
-  function handleSelectedPlace(place: 'interior' | 'exterior') {
-    selectedPlace.value = place;
-    console.log(selectedPlace.value);
-    currentStep.value = 'finished';
-  }
-
+});
 </script>
 
 <template>
@@ -85,112 +108,122 @@
     <Transition name="fade" mode="out-in">
       <ReservePageBranches
         v-if="!selectedLocation"
-        @branch-selected="handleSelectedLocation">
+        @branch-selected="handleSelectedLocation"
+      >
       </ReservePageBranches>
-    
+
       <div v-else>
-        <a id="back-btn" href="/reservar"> <img src="/back-black-icon.svg" alt="Icono de ir atrás">Ubicaciones</a>
+        <a id="back-btn" href="/reservar">
+          <img
+            src="/back-black-icon.svg"
+            alt="Icono de ir atrás"
+          />Ubicaciones</a
+        >
         <ReservePageProgressLine
-        :guestNum="guestNum"
-        :date="selectedDate"
-        :time="selectedTime"
-        :place="selectedPlace"
-        @step-clicked="handleStepClick">
-      </ReservePageProgressLine>
-    </div>
+          :guestNum="guestNum"
+          :date="selectedDate"
+          :time="selectedTime"
+          :place="selectedPlace"
+          @step-clicked="handleStepClick"
+        >
+        </ReservePageProgressLine>
+      </div>
     </Transition>
-  
+
     <Transition name="fade" mode="out-in">
       <ReservePageGuestCounter
         v-if="currentStep == 'guests'"
         :guestNum="guestNum"
-        @set-guest-num="handleGuestNumSet">
+        @set-guest-num="handleGuestNumSet"
+      >
       </ReservePageGuestCounter>
 
-      <ReservePageCalendar 
+      <ReservePageCalendar
         v-else-if="currentStep == 'calendar'"
-        :selectedDay="selectedDate.day ? selectedDate.day : initialDate.day" 
-        :selectedMonth="selectedDate.month ? selectedDate.month : initialDate.month" 
-        :selectedYear="selectedDate.year ? selectedDate.year : initialDate.year" 
-        @date-clicked="handleCalendarClick">
+        :selectedDay="selectedDate.day ? selectedDate.day : initialDate.day"
+        :selectedMonth="
+          selectedDate.month ? selectedDate.month : initialDate.month
+        "
+        :selectedYear="selectedDate.year ? selectedDate.year : initialDate.year"
+        @date-clicked="handleCalendarClick"
+      >
       </ReservePageCalendar>
-      
+
       <ReservePageTime
         v-else-if="currentStep == 'time'"
-        @set-time="handleTimeSetting">
+        @set-time="handleTimeSetting"
+      >
       </ReservePageTime>
 
       <ReservePagePlace
         v-else-if="currentStep == 'place'"
-        @place-selected="handleSelectedPlace">
+        @place-selected="handleSelectedPlace"
+      >
       </ReservePagePlace>
 
-      <h2 v-else-if="currentStep == 'finished'" id="reserved-msg">¡Tu reservación está lista!</h2>
+      <h2 v-else-if="currentStep == 'finished'" id="reserved-msg">
+        ¡Tu reservación está lista!
+      </h2>
     </Transition>
   </div>
 </template>
 
-
 <style scoped>
+#reservation-page-container {
+  min-height: 100dvh;
+  background-color: #e5e5e5;
+}
 
-  #reservation-page-container {
-    min-height: 100dvh;
-    background-color: #e5e5e5;
-  }
-
-  h2 {
-    font-size: clamp(24px, 6vw, 32px);
-    font-family: Merriweather;
-    text-align: center;
-    font-weight: 700;
-    padding: 45px 35px;
-    margin: 0;
-    color: white;
-    text-shadow:
+h2 {
+  font-size: clamp(24px, 6vw, 32px);
+  font-family: Merriweather;
+  text-align: center;
+  font-weight: 700;
+  padding: 45px 35px;
+  margin: 0;
+  color: white;
+  text-shadow:
     1.5px 0px var(--tertiary),
     0px 1.5px var(--tertiary),
     -1.5px 0px var(--tertiary),
     0px -1.5px var(--tertiary);
-    letter-spacing: 1.5px;
-  }
+  letter-spacing: 1.5px;
+}
 
-  #back-btn {
-    background: transparent;
-    display: flex;
-    align-items: center;
-    font-size: 15px;
-    gap: 7px;
-    border: none;
-    margin-left: 30px;
-    margin-bottom: 35px;
-    text-decoration: none;
-    color: black;
+#back-btn {
+  background: transparent;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  gap: 7px;
+  border: none;
+  margin-left: 30px;
+  margin-bottom: 35px;
+  text-decoration: none;
+  color: black;
+}
 
-  }
+#back-btn img {
+  width: 25px;
+}
 
-  #back-btn img {
-    width: 25px;
-  }
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.15s ease-out;
+}
 
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: all 0.15s ease-out;
-  }
+.fade-enter-from {
+  opacity: 0;
+  transform: translateX(30px);
+}
 
-  .fade-enter-from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
+.fade-leave-to {
+  opacity: 0;
+  transform: translateX(-30px);
+}
 
-  .fade-leave-to {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-
-  #reserved-msg {
-    color: black;
-    text-shadow: none;
-  }
-
-
+#reserved-msg {
+  color: black;
+  text-shadow: none;
+}
 </style>
