@@ -95,7 +95,7 @@ onMounted(() => {
         <li :class="{'minute-item': true, 'void': true}"> </li>
         <li :class="{'minute-item': true, 'void': true}"> </li>
       </ul>
-      <select id="day-part" @change="dayPart = ($event.target as HTMLSelectElement).value">
+      <select id="day-part" multiple @change="dayPart = ($event.target as HTMLSelectElement).value">
         <option selected value="am">am</option>
         <option value="pm">pm</option>
       </select>

@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   vite: {
     server: {
       allowedHosts: [
-        'a3da-2806-103e-c-f9a1-7829-55e1-89c8-3a27.ngrok-free.app'
+        'e35c-2806-103e-c-fd87-b466-ed57-7f6f-3481.ngrok-free.app'
       ]
     }
   }
