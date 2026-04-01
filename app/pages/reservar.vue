@@ -93,13 +93,6 @@ function handleSelectedPlace(place: "interior" | "exterior") {
   console.log(selectedPlace.value);
   currentStep.value = "finished";
 }
-
-watch(currentStep, (newStep) => {
-  if (newStep === "calendar") {
-    console.log("calendar step");
-    console.log();
-  }
-});
 </script>
 
 <template>
@@ -124,6 +117,7 @@ watch(currentStep, (newStep) => {
           :date="selectedDate"
           :time="selectedTime"
           :place="selectedPlace"
+          :currentStep="currentStep"
           @step-clicked="handleStepClick"
         >
         </ReservePageProgressLine>
