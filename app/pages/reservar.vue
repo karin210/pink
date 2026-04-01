@@ -38,25 +38,6 @@ const currentStep = ref<
   "guests" | "calendar" | "time" | "place" | "finished" | undefined
 >(undefined);
 
-function handleCalendarClick(
-  selectedYear: number,
-  selectedMonth: number,
-  selectedDay: number,
-) {
-  // add 1 to the selectedDay
-  selectedDate.day = selectedDay;
-  selectedDate.month = selectedMonth;
-  selectedDate.year = selectedYear;
-  currentStep.value = "time";
-}
-
-function handleGuestNumSet(count) {
-  if (count > 0) {
-    guestNum.value = count;
-    currentStep.value = "calendar";
-  }
-}
-
 function handleStepClick(step) {
   switch (step) {
     case "guests":
@@ -77,21 +58,53 @@ function handleStepClick(step) {
   }
 }
 
+function findNextStep() {
+  if (!guestNum.value) {
+    return "guests";
+  } else if (!selectedDate.day) {
+    return "calendar";
+  } else if (!selectedTime.value) {
+    return "time";
+  } else if (!selectedPlace.value) {
+    return "place";
+  } else {
+    return "finished";
+  }
+}
+
+function handleGuestNumSet(count) {
+  if (count > 0) {
+    guestNum.value = count;
+  }
+  currentStep.value = findNextStep();
+}
+
+function handleCalendarClick(
+  selectedYear: number,
+  selectedMonth: number,
+  selectedDay: number,
+) {
+  // add 1 to the selectedDay
+  selectedDate.day = selectedDay;
+  selectedDate.month = selectedMonth;
+  selectedDate.year = selectedYear;
+  currentStep.value = findNextStep();
+}
+
 function handleTimeSetting(h: string, m: string, dayPart: string) {
   const min = m.length == 1 ? "0" + m : m;
   selectedTime.value = `${h}:${min} ${dayPart}`;
-  currentStep.value = "place";
+  currentStep.value = findNextStep();
 }
 
 function handleSelectedLocation(branchName: "quinceo" | "artilleros") {
   selectedLocation.value = branchName;
-  currentStep.value = "guests";
+  currentStep.value = findNextStep();
 }
 
 function handleSelectedPlace(place: "interior" | "exterior") {
   selectedPlace.value = place;
-  console.log(selectedPlace.value);
-  currentStep.value = "finished";
+  currentStep.value = findNextStep();
 }
 </script>
 
