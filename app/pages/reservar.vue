@@ -194,10 +194,10 @@ h2 {
   background: transparent;
   display: flex;
   align-items: center;
-  font-size: 15px;
+  font-size: clamp(15px, 11.73px + 1.02vw, 24px);
   gap: 7px;
   border: none;
-  margin-left: 30px;
+  margin-left: min(150px, 12vw);
   margin-bottom: 35px;
   text-decoration: none;
   color: black;
