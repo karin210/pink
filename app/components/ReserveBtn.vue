@@ -1,5 +1,5 @@
 <template>
-  <a id="reserve-btn" href="/reservar">Reservar</a>
+  <NuxtLink id="reserve-btn" to="/reservar">Reservar</NuxtLink>
 </template>
 
 <style scoped>

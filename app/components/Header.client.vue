@@ -81,9 +81,9 @@ onMounted(() => {
           :class="{ visible: !reserveBtnFound }"
           title="Reservar"
         >
-          <a href="/reservar">
+          <NuxtLink to="/reservar">
             <img src="/calendar-icon.svg" alt="Ícono de reservación" />
-          </a>
+          </NuxtLink>
         </li>
       </ul>
     </nav>

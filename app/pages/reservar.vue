@@ -119,11 +119,11 @@ function handleSelectedPlace(place: "interior" | "exterior") {
       </ReservePageBranches>
 
       <div v-else>
-        <a id="back-btn" href="/reservar">
+        <NuxtLink id="back-btn" to="/reservar">
           <img
             src="/back-black-icon.svg"
             alt="Icono de ir atrás"
-          />Ubicaciones</a
+          />Ubicaciones</NuxtLink
         >
         <ReservePageProgressLine
           :guestNum="guestNum"
