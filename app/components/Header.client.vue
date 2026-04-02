@@ -106,7 +106,7 @@ onMounted(() => {
   box-sizing: border-box;
   display: flex;
   position: fixed;
-  top: calc(100dvh - 45px);
+  bottom: 0;
   height: 45px;
   z-index: 1;
   width: 100vw;
