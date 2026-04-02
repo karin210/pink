@@ -14,6 +14,8 @@ export default defineNuxtConfig({
     preset: "github-pages",
     prerender: {
       crawlLinks: true, // Automatically finds all your routes
+      // This tells Nuxt to create a physical /reservar/index.html file
+      routes: ["/reservar"],
     },
   },
 
