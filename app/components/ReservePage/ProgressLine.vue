@@ -42,7 +42,7 @@ const monthList = [
       <div class="main-content-wrapper">
         <img
           class="icon"
-          src="/pink/group-gray-icon.svg"
+          src="/group-gray-icon.svg"
           alt="Ícono de cantidad de personas"
         />
         <div :class="{ circle: true, selected: currentStep === 'guests' }">
@@ -68,11 +68,7 @@ const monthList = [
     </li>
     <li :class="{ ready: date.day }" @click="$emit('stepClicked', 'date')">
       <div class="main-content-wrapper">
-        <img
-          class="icon"
-          src="/pink/calendar-gray-icon.svg"
-          alt="Ícono de fecha"
-        />
+        <img class="icon" src="/calendar-gray-icon.svg" alt="Ícono de fecha" />
         <div :class="{ circle: true, selected: currentStep === 'calendar' }">
           <p>
             {{
@@ -103,7 +99,7 @@ const monthList = [
     </li>
     <li :class="{ ready: time }" @click="$emit('stepClicked', 'time')">
       <div class="main-content-wrapper">
-        <img class="icon" src="/pink/clock-gray-icon.svg" alt="Ícono de hora" />
+        <img class="icon" src="/clock-gray-icon.svg" alt="Ícono de hora" />
         <div :class="{ circle: true, selected: currentStep === 'time' }">
           <span>{{ time ?? "--" }}</span>
         </div>
@@ -129,7 +125,7 @@ const monthList = [
       <div class="main-content-wrapper">
         <img
           class="icon"
-          src="/pink/selected-place-gray-icon.svg"
+          src="/selected-place-gray-icon.svg"
           alt="Ícono de lugar"
         />
         <div :class="{ circle: true, selected: currentStep === 'place' }">

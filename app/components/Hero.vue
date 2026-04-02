@@ -1,18 +1,11 @@
 <template>
   <main id="hero-section">
-    <img
-      id="logo-hero"
-      src="/pink/pink-logo.png"
-      alt="Logo de Pink Bubble Brunch"
-    />
+    <img id="logo-hero" src="/pink-logo.png" alt="Logo de Pink Bubble Brunch" />
     <figure id="hero-img-container">
       <picture>
-        <source
-          srcset="/pink/girls-vertical-1.jpg"
-          media="(max-width: 619px)"
-        />
-        <source srcset="/pink/main-slide.jpg" media="(min-width: 620px)" />
-        <img src="/pink/main-slide.jpg" alt="hero image" />
+        <source srcset="/girls-vertical-1.jpg" media="(max-width: 619px)" />
+        <source srcset="/main-slide.jpg" media="(min-width: 620px)" />
+        <img src="/main-slide.jpg" alt="hero image" />
       </picture>
     </figure>
     <div id="foreground"></div>

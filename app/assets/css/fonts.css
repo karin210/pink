@@ -1,7 +1,7 @@
 /* Regular variable font */
 @font-face {
   font-family: "Cormorant Garamond";
-  src: url("/pink/fonts/Cormorant_Garamond/CormorantGaramond-VariableFont_wght.ttf")
+  src: url("/fonts/Cormorant_Garamond/CormorantGaramond-VariableFont_wght.ttf")
     format("truetype");
   font-weight: 100 700; /* range supported by the variable font */
   font-style: normal;
@@ -11,7 +11,7 @@
 /* Italic variable font */
 @font-face {
   font-family: "Cormorant Garamond";
-  src: url("/pink/fonts/Cormorant_Garamond/CormorantGaramond-Italic-VariableFont_wght.ttf")
+  src: url("/fonts/Cormorant_Garamond/CormorantGaramond-Italic-VariableFont_wght.ttf")
     format("truetype");
   font-weight: 100 700;
   font-style: italic;
@@ -21,7 +21,7 @@
 /* Regular variable font */
 @font-face {
   font-family: "Merriweather";
-  src: url("/pink/fonts/Merriweather/Merriweather-VariableFont_opsz,wdth,wght.ttf")
+  src: url("/fonts/Merriweather/Merriweather-VariableFont_opsz,wdth,wght.ttf")
     format("truetype");
   font-weight: 100 700; /* range supported by the variable font */
   font-style: normal;
@@ -31,7 +31,7 @@
 /* Italic variable font */
 @font-face {
   font-family: "Merriweather";
-  src: url("/pink/fonts/Merriweather/Merriweather-Italic-VariableFont_opsz,wdth,wght.ttf")
+  src: url("/fonts/Merriweather/Merriweather-Italic-VariableFont_opsz,wdth,wght.ttf")
     format("truetype");
   font-weight: 100 700;
   font-style: italic;
@@ -41,7 +41,7 @@
 /* Regular variable font */
 @font-face {
   font-family: "Montserrat";
-  src: url("/pink/fonts/Montserrat/Montserrat-VariableFont_wght.ttf")
+  src: url("/fonts/Montserrat/Montserrat-VariableFont_wght.ttf")
     format("truetype");
   font-weight: 100 700; /* range supported by the variable font */
   font-style: normal;
@@ -51,7 +51,7 @@
 /* Italic variable font */
 @font-face {
   font-family: "Montserrat";
-  src: url("/pink/fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf")
+  src: url("/fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf")
     format("truetype");
   font-weight: 100 700;
   font-style: italic;

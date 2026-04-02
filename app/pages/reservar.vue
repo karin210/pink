@@ -119,9 +119,9 @@ function handleSelectedPlace(place: "interior" | "exterior") {
       </ReservePageBranches>
 
       <div v-else>
-        <a id="back-btn" href="/pink/reservar">
+        <a id="back-btn" href="/reservar">
           <img
-            src="/pink/back-black-icon.svg"
+            src="/back-black-icon.svg"
             alt="Icono de ir atrás"
           />Ubicaciones</a
         >

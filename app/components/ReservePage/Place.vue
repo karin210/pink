@@ -18,7 +18,7 @@ function changeImage(action: string) {
     <ul class="restaurant-list" @click="$emit('placeSelected', 'Exterior')">
       <li class="restaurant-item">
         <img
-          src="/pink/Artilleros-branch-exterior-vertical-1.jpg"
+          src="/Artilleros-branch-exterior-vertical-1.jpg"
           alt="Restaurante en Quinceo"
         />
         <span>Exterior</span>
@@ -27,7 +27,7 @@ function changeImage(action: string) {
 
       <li class="restaurant-item" @click="$emit('placeSelected', 'Interior')">
         <img
-          src="/pink/Artilleros-branch-interior-1.jpg"
+          src="/Artilleros-branch-interior-1.jpg"
           alt="Restaurante en Quinceo"
         />
         <span>Interior</span>

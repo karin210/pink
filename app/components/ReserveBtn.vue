@@ -1,5 +1,5 @@
 <template>
-  <a id="reserve-btn" href="/pink/reservar">Reservar</a>
+  <a id="reserve-btn" href="/reservar">Reservar</a>
 </template>
 
 <style scoped>

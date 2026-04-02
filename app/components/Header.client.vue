@@ -41,10 +41,10 @@ onMounted(() => {
   <div id="main-ctrls-bar">
     <a
       id="logo-anchor-wrapper"
-      href="/pink/"
+      href="/"
       :class="{ visible: !reserveBtnFound || route.path != '/' }"
     >
-      <img src="/pink/pink-logo.png" alt="Logo de Pink Bubble Brunch" />
+      <img src="/pink-logo.png" alt="Logo de Pink Bubble Brunch" />
     </a>
     <nav>
       <ul id="link-list">
@@ -54,10 +54,7 @@ onMounted(() => {
             href=""
             @click="handleLinkClick('events', $event)"
           >
-            <img
-              src="/pink/celebration-white-icon.svg"
-              alt="Ícono de confetti"
-            />
+            <img src="/celebration-white-icon.svg" alt="Ícono de confetti" />
           </a>
           <Transition name="fade">
             <div v-if="showPopup && popupLink === 'events'" class="popup">
@@ -71,10 +68,7 @@ onMounted(() => {
             href=""
             @click="handleLinkClick('restaurant', $event)"
           >
-            <img
-              src="/pink/restaurant-white-icon.svg"
-              alt="Ícono de restaurante"
-            />
+            <img src="/restaurant-white-icon.svg" alt="Ícono de restaurante" />
           </a>
           <Transition name="fade">
             <div v-if="showPopup && popupLink === 'restaurant'" class="popup">
@@ -87,8 +81,8 @@ onMounted(() => {
           :class="{ visible: !reserveBtnFound }"
           title="Reservar"
         >
-          <a href="/pink/reservar">
-            <img src="/pink/calendar-icon.svg" alt="Ícono de reservación" />
+          <a href="/reservar">
+            <img src="/calendar-icon.svg" alt="Ícono de reservación" />
           </a>
         </li>
       </ul>
@@ -182,7 +176,7 @@ onMounted(() => {
   width: 30px;
   padding: 0;
   border: none;
-  background-image: url("/pink/user-white-icon.svg");
+  background-image: url("/user-white-icon.svg");
   background-size: contain;
   background-position: center;
   background-color: transparent;

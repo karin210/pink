@@ -12,7 +12,7 @@ const count = ref<number>(Math.max(guestNum ?? 1, 1));
       <div>
         <img
           class="icon"
-          src="/pink/group-gray-icon.svg"
+          src="/group-gray-icon.svg"
           alt="Ícono de cantidad de personas"
         />
       </div>
