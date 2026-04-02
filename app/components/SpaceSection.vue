@@ -25,13 +25,13 @@ function changeImage(action: string) {
         >
           <li id="slide-1" :class="{ slide: true, selected: slideIndex == 0 }">
             <figure class="img-container">
-              <img src="/spots-slide.jpg" alt="" />
+              <img src="/pink/spots-slide.jpg" alt="" />
               <figcaption>Los spots que tu Instagram necesita</figcaption>
             </figure>
           </li>
           <li id="slide-3" :class="{ slide: true, selected: slideIndex == 1 }">
             <figure class="img-container">
-              <img src="/events-slide.jpg" alt="" />
+              <img src="/pink/events-slide.jpg" alt="" />
               <figcaption>
                 El espacio perfecto para tus fechas especiales
               </figcaption>
@@ -39,7 +39,7 @@ function changeImage(action: string) {
           </li>
           <li id="slide-3" :class="{ slide: true, selected: slideIndex == 2 }">
             <figure class="img-container">
-              <img src="/food-slide.jpg" alt="" />
+              <img src="/pink/food-slide.jpg" alt="" />
               <figcaption>Disfruta de una comida deliciosa</figcaption>
             </figure>
           </li>
@@ -60,6 +60,7 @@ function changeImage(action: string) {
   display: flex;
   flex-direction: column;
   height: 100dvh;
+  background: linear-gradient(180deg, transparent 91%, #ff378c 98%);
   position: relative;
 }
 
@@ -186,12 +187,12 @@ button.nav-arrow {
 }
 
 button.nav-arrow:first-of-type {
-  background-image: url("/chevron-left-icon.svg");
+  background-image: url("/pink/chevron-left-icon.svg");
   left: 2%;
 }
 
 button.nav-arrow:nth-of-type(2) {
-  background-image: url("/chevron-right-icon.svg");
+  background-image: url("/pink/chevron-right-icon.svg");
   right: 2%;
 }
 

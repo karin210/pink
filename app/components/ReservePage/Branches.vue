@@ -30,13 +30,13 @@ function handlePicsClick(event: Event) {
     <ul id="branch-list" class="item-list">
       <li class="branch-item card relative">
         <img
-          src="/Artilleros-branch-interior-1.jpg"
+          src="/pink/Artilleros-branch-interior-1.jpg"
           alt="Restaurante en Quinceo"
         />
         <ul class="info-list">
           <li class="address-item">
             <div class="address-header">
-              <img src="/location-pink-icon.svg" alt="Ícono de mapa" />
+              <img src="/pink/location-pink-icon.svg" alt="Ícono de mapa" />
               <h4>Dirección</h4>
             </div>
             <p>
@@ -57,7 +57,7 @@ function handlePicsClick(event: Event) {
             <div class="pics-btn-container">
               <img
                 class="pics-btn"
-                src="/pic-pink-icon.svg"
+                src="/pink/pic-pink-icon.svg"
                 alt="Ícono de fotos"
                 @click.stop="handlePicsClick($event)"
               />
@@ -72,11 +72,11 @@ function handlePicsClick(event: Event) {
       </li>
 
       <li class="branch-item card" @click="handleBranchClick($event)">
-        <img src="/Quinceo-branch-5.jpg" alt="Restaurante en Quinceo" />
+        <img src="/pink/Quinceo-branch-5.jpg" alt="Restaurante en Quinceo" />
         <ul class="info-list">
           <li class="address-item">
             <div class="address-header">
-              <img src="/location-pink-icon.svg" alt="Ícono de mapa" />
+              <img src="/pink/location-pink-icon.svg" alt="Ícono de mapa" />
               <h4>Dirección</h4>
             </div>
             <p>
@@ -97,7 +97,7 @@ function handlePicsClick(event: Event) {
             ></button>
             <img
               class="pics-btn"
-              src="/pic-pink-icon.svg"
+              src="/pink/pic-pink-icon.svg"
               alt="Ícono de fotos"
             />
           </li>
@@ -237,7 +237,7 @@ p {
   width: 60px;
   height: 34px;
   padding: 5px 0;
-  background-image: url(/right-arrow-white-icon.svg);
+  background-image: url(/pink/right-arrow-white-icon.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-color: var(--tertiary);

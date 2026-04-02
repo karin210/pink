@@ -2,8 +2,10 @@
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: false },
+  ssr: false, // Set to false for static hosting on GitHub Pages
   app: {
-    baseURL: "/",
+    baseURL: "/pink/", // Updated for your GitHub repository name
+    buildAssetsDir: "assets", // Avoids the default _nuxt folder which GH Pages can sometimes block
   },
   css: ["~/assets/css/global.css", "~/assets/css/fonts.css"],
   vite: {
