@@ -41,7 +41,7 @@ onMounted(() => {
   <div id="main-ctrls-bar">
     <NuxtLink
       id="logo-anchor-wrapper"
-      href="/"
+      to="/"
       :class="{ visible: !reserveBtnFound || route.path != '/' }"
     >
       <img src="/pink-logo.png" alt="Logo de Pink Bubble Brunch" />
