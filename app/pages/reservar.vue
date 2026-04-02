@@ -178,7 +178,7 @@ function handleSelectedPlace(place: "interior" | "exterior") {
 <style scoped>
 #reservation-page-container {
   min-height: 100dvh;
-  background-color: #e5e5e5;
+  background-color: #f4f4f4;
 }
 
 h2 {

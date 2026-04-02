@@ -39,13 +39,13 @@ onMounted(() => {
 
 <template>
   <div id="main-ctrls-bar">
-    <a
+    <NuxtLink
       id="logo-anchor-wrapper"
       href="/"
       :class="{ visible: !reserveBtnFound || route.path != '/' }"
     >
       <img src="/pink-logo.png" alt="Logo de Pink Bubble Brunch" />
-    </a>
+    </NuxtLink>
     <nav>
       <ul id="link-list">
         <li title="Eventos especiales" class="link-item">
